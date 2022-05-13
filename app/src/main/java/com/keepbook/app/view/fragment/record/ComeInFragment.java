@@ -27,7 +27,7 @@ public class ComeInFragment extends BaseFragment {
     public ComeInFragment() {
         super(R.layout.fragment_come);
     }
-
+    private Integer mPos=-1;
     @Override
     protected void init() {
         recCome.setLayoutManager(new GridLayoutManager(getContext(), 4));
@@ -43,7 +43,20 @@ public class ComeInFragment extends BaseFragment {
             protected void bindData(@NonNull IconItemViewHolder holder, int position, IconTitleItem item) {
                 holder.icImage.setImageResource(item.getImageId());
                 holder.icTv.setText(item.getTitle());
+                holder.icImage.setTouchSelectModeEnabled(true);
+                if (mPos == position) {
+                    holder.icImage.setSelected(true);
+                }else{
+                    holder.icImage.setSelected(false);
 
+                }
+                holder.icImage.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mPos = position;
+                        notifyDataSetChanged();
+                    }
+                });
             }
         });
     }

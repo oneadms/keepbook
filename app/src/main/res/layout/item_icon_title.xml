@@ -3,16 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="60dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
 
     android:layout_gravity="center"
     android:gravity="center"
     android:orientation="vertical">
 
-    <ImageView
+    <com.xuexiang.xui.widget.imageview.RadiusImageView
+        app:riv_selected_border_color="#2196F3"
+        app:riv_border_width="5px"
         android:id="@+id/ic_image"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:scaleType="fitXY"
+        app:riv_is_circle="true"
+        app:riv_is_touch_select_mode_enabled="true"
+        app:riv_selected_border_width="5px"
         tools:src="@drawable/records_type_canyin" />
 
     <TextView
