@@ -3,10 +3,10 @@
 
     <string-array name="values">
         <item>
-            HOME
+            OUT
         </item>
         <item>
-            WRITE
+            IN
         </item>
 
     </string-array>

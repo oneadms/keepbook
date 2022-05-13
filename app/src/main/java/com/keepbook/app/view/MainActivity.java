@@ -8,7 +8,7 @@ import com.keepbook.app.R;
 import com.keepbook.app.view.base.BaseActivity;
 import com.keepbook.app.view.fragment.BIllFragment;
 import com.keepbook.app.view.fragment.HomeFragment;
-import com.keepbook.app.view.fragment.RecordFragment;
+import com.keepbook.app.view.fragment.record.RecordFragment;
 import com.keepbook.app.view.listener.PageSelectListener;
 import com.xuexiang.xui.adapter.FragmentAdapter;
 
@@ -34,9 +34,10 @@ public class MainActivity extends BaseActivity {
         /**
          * 顺序更改要和 com.keepbook.app.view.listener.PageSelectListener 该类同步更改
          */
-        fragments.add(new HomeFragment(R.layout.fragment_home));
-        fragments.add(new RecordFragment(R.layout.fragment_record));
-        fragments.add(new BIllFragment(R.layout.fragment_bill));
+        fragments.add(new HomeFragment());
+        fragments.add(new RecordFragment());
+        fragments.add(new BIllFragment());
+
     }
 
     @Override
