@@ -5,6 +5,7 @@ import android.view.View;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.keepbook.app.R;
 import com.keepbook.app.view.fragment.base.BaseFragment;
 import com.xuexiang.xui.adapter.FragmentAdapter;
@@ -19,6 +20,7 @@ public class RecordFragment extends BaseFragment {
 
     private TabControlView tabControlView;
     private ViewPager recordViewPager;
+    private FloatingActionButton fabRecord;
 
     public RecordFragment() {
         super(R.layout.fragment_record);
@@ -28,6 +30,7 @@ public class RecordFragment extends BaseFragment {
     protected void initView(View view) {
         tabControlView = (TabControlView) view.findViewById(R.id.tab_control_view);
         recordViewPager = (ViewPager) view.findViewById(R.id.record_view_pager);
+        fabRecord = (FloatingActionButton) view.findViewById(R.id.fab_record);
         recordViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -73,10 +76,17 @@ public class RecordFragment extends BaseFragment {
                 }
             }
         });
+        fabRecord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    XToast.success(getContext(),"记一笔").show();
+            }
+        });
     }
 
     /**
      * 初始化 收入和支出 片段
+     *
      * @return
      */
     private List<Fragment> initFragments() {
