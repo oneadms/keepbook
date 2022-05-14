@@ -33,7 +33,26 @@ public class RecordFragment extends BaseFragment {
         recordViewPager = ((MyViewPager) view.findViewById(R.id.record_view_pager));
         fabRecord = (FloatingActionButton) view.findViewById(R.id.fab_record);
 
+        recordViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                try {
+                    tabControlView.setSelectionTitle(position==0?"支出":"收入");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
 
         try {
