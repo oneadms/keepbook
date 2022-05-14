@@ -9,6 +9,9 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.keepbook.app.R;
+import com.keepbook.app.model.dto.KeepBookDTO;
+import com.keepbook.app.util.BookUtils;
+import com.keepbook.app.util.SqlLiteUtils;
 import com.keepbook.app.view.fragment.base.BaseFragment;
 import com.keepbook.app.wdiget.MyViewPager;
 import com.xuexiang.xui.adapter.FragmentAdapter;
@@ -132,7 +135,14 @@ public class RecordFragment extends BaseFragment {
                         .onPositive(new MaterialDialog.SingleButtonCallback() {
                             @Override
                             public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                XToast.success(getContext(), "记录成功").show();
+                                BookUtils bookUtils = new BookUtils(SqlLiteUtils.getInstance(getContext()));
+                                Long rows = bookUtils.writeDataOfOne(new KeepBookDTO(category, Double.parseDouble(money), remark));
+                                if (rows > 0) {
+
+                                    XToast.success(getContext(), "记录成功").show();
+                                }else{
+                                    XToast.error(getContext(),"记录失败").show();
+                                }
                             }
                         })
                         .show();
