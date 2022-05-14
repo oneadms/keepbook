@@ -11,6 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/XUITheme.Phone">
         <activity
+            android:windowSoftInputMode="adjustNothing"
             android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>
