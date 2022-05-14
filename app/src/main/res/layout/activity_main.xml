@@ -15,7 +15,7 @@
         android:orientation="vertical">
 
 
-        <androidx.viewpager.widget.ViewPager
+        <com.keepbook.app.wdiget.MyViewPager
             android:id="@+id/main_viewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
