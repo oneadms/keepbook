@@ -1,11 +1,15 @@
 package com.keepbook.app.view.fragment.record;
 
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.keepbook.app.R;
@@ -13,6 +17,7 @@ import com.keepbook.app.model.vo.IconTitleItem;
 import com.keepbook.app.view.fragment.base.BaseFragment;
 import com.keepbook.app.viewholder.IconItemViewHolder;
 import com.xuexiang.xui.adapter.recyclerview.XRecyclerAdapter;
+import com.xuexiang.xui.widget.imageview.RadiusImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,21 +27,75 @@ import java.util.List;
  */
 public class PayFragment extends BaseFragment {
     private RecyclerView recPay;
+    private LinearLayout circleContainer;
 
     public PayFragment() {
         super(R.layout.fragment_pay);
     }
 
-    private Integer mPos=-1;
+    private Integer mPos = -1;
+    private float startX = 0;
+    private float endX = 0;
+    static int page = 1;
+
     @Override
     protected void init() {
-        recPay.setLayoutManager(new GridLayoutManager(getContext(), 4));
-        recPay.setAdapter(new XRecyclerAdapter<IconTitleItem, IconItemViewHolder>(initData()) {
+        recPay.setLayoutManager(new GridLayoutManager(getContext(), 4, LinearLayoutManager.VERTICAL, false));
+
+        List<IconTitleItem> iconTitleItems = initData();
+
+        recPay.setAdapter(new XRecyclerAdapter<IconTitleItem, IconItemViewHolder>(iconTitleItems) {
+
+
             @NonNull
             @Override
             protected IconItemViewHolder getViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+                parent.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+
+                        switch (event.getAction()) {
+                            case MotionEvent.ACTION_DOWN:
+                                startX = event.getRawX();
+                                break;
+
+                            case MotionEvent.ACTION_MOVE:
+                                float MOVE_X = event.getRawX();
+                                parent.setTranslationX(MOVE_X - startX);
+                                break;
+                            case MotionEvent.ACTION_UP:
+                                parent.setTranslationX(0);
+                                endX = event.getRawX();
+                                Log.i("TAG", "startX-endX=" + (startX - endX));
+                                if (startX - endX > 100) {
+
+                                    page++;
+                                    if (page > maxPage()) {
+                                        page = 1;
+                                    }
+                                    notifyCirclerChanged(page);
+
+                                    refresh(iconTitleItems.subList((page - 1) * 12, (page - 1) * 12 + 12));
+
+                                }
+
+                                break;
+                        }
+                        return true;
+                    }
+                });
                 View view = LayoutInflater.from(getContext().getApplicationContext()).inflate(R.layout.item_icon_title, parent, false);
                 return new IconItemViewHolder(view);
+            }
+
+            public int maxPage() {
+                return iconTitleItems.size() / 12;
+            }
+
+            @Override
+            public int getItemCount() {
+                return 12;
             }
 
             @Override
@@ -46,7 +105,7 @@ public class PayFragment extends BaseFragment {
                 holder.icImage.setTouchSelectModeEnabled(true);
                 if (mPos == position) {
                     holder.icImage.setSelected(true);
-                }else{
+                } else {
                     holder.icImage.setSelected(false);
 
                 }
@@ -59,6 +118,16 @@ public class PayFragment extends BaseFragment {
                 });
             }
         });
+    }
+
+    private void notifyCirclerChanged(int page) {
+        int index=page-1;
+        for (int i = 0; i < circleContainer.getChildCount(); i++) {
+
+            ((RadiusImageView) circleContainer.getChildAt(i)).setImageResource(R.color.black);
+        }
+        ((RadiusImageView) circleContainer.getChildAt(index)).setImageResource(R.color.xui_config_color_blue);
+
     }
 
     private List<IconTitleItem> initData() {
@@ -101,7 +170,6 @@ public class PayFragment extends BaseFragment {
         data.add(new IconTitleItem("追星", R.drawable.records_type_lvxing));
 
 
-
         return data;
     }
 
@@ -110,6 +178,7 @@ public class PayFragment extends BaseFragment {
 
         recPay = (RecyclerView) view.findViewById(R.id.rec_pay);
 
+        circleContainer = (LinearLayout) view.findViewById(R.id.circle_container);
     }
 
     @Override

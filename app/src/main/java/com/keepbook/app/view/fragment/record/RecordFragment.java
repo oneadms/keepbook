@@ -8,6 +8,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.keepbook.app.R;
 import com.keepbook.app.view.fragment.base.BaseFragment;
+import com.keepbook.app.wdiget.MyViewPager;
 import com.xuexiang.xui.adapter.FragmentAdapter;
 import com.xuexiang.xui.widget.tabbar.TabControlView;
 import com.xuexiang.xui.widget.toast.XToast;
@@ -29,23 +30,11 @@ public class RecordFragment extends BaseFragment {
 
     protected void initView(View view) {
         tabControlView = (TabControlView) view.findViewById(R.id.tab_control_view);
-        recordViewPager = (ViewPager) view.findViewById(R.id.record_view_pager);
+        recordViewPager = ((MyViewPager) view.findViewById(R.id.record_view_pager));
         fabRecord = (FloatingActionButton) view.findViewById(R.id.fab_record);
-        recordViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            }
 
-            @Override
-            public void onPageSelected(int position) {
-                tabControlView.setSelectionTitle(position == 0 ? "支出" : "收入");
-            }
 
-            @Override
-            public void onPageScrollStateChanged(int state) {
 
-            }
-        });
 
         try {
             tabControlView.setDefaultSelection(0);
@@ -78,6 +67,7 @@ public class RecordFragment extends BaseFragment {
         });
         fabRecord.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View v) {
                     XToast.success(getContext(),"记一笔").show();
             }
