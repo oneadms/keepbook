@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rec_pay"
@@ -12,28 +12,73 @@
 
     <LinearLayout
         android:id="@+id/circle_container"
-        android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
 
         <com.xuexiang.xui.widget.imageview.RadiusImageView
-            app:riv_is_circle="true"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_margin="1dp"
             android:src="#03A9F4"
-            android:layout_margin="1dp"
-            android:layout_width="10dp"
-            android:layout_height="10dp" />
+            app:riv_is_circle="true" />
+
         <com.xuexiang.xui.widget.imageview.RadiusImageView
-            app:riv_is_circle="true"
-            android:src="#1E1515"
-            android:layout_margin="1dp"
             android:layout_width="10dp"
-            android:layout_height="10dp" />
-        <com.xuexiang.xui.widget.imageview.RadiusImageView
-            app:riv_is_circle="true"
+            android:layout_height="10dp"
             android:layout_margin="1dp"
             android:src="#1E1515"
+            app:riv_is_circle="true" />
+
+        <com.xuexiang.xui.widget.imageview.RadiusImageView
             android:layout_width="10dp"
-            android:layout_height="10dp" />
+            android:layout_height="10dp"
+            android:layout_margin="1dp"
+            android:src="#1E1515"
+            app:riv_is_circle="true" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="备注:" />
+
+            <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入备注...."
+                app:met_iconLeft="@drawable/icon_remark" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="价格:" />
+
+            <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入价格...."
+                android:inputType="number"
+                app:met_iconLeft="@drawable/icon_money" />
+        </LinearLayout>
+
 
     </LinearLayout>
 
