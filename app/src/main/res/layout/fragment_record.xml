@@ -1,41 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".view.MainActivity"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view.MainActivity">
+
     <com.xuexiang.xui.widget.tabbar.TabControlView
         android:id="@+id/tab_control_view"
-        app:tcv_item_padding="20dp"
-        android:gravity="center"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
 
+        app:tcv_item_padding="20dp"
         app:tcv_items="@array/items"
-        app:tcv_values="@array/values"
 
-        android:layout_height="wrap_content">
+        app:tcv_values="@array/values">
 
     </com.xuexiang.xui.widget.tabbar.TabControlView>
 
     <com.keepbook.app.wdiget.MyViewPager
 
         android:id="@+id/record_view_pager"
-        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="0dp" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="备注:" />
+
+            <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
+                android:id="@+id/edit_remark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入备注....[可选]"
+                app:met_iconLeft="@drawable/icon_remark" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="金额:" />
+
+            <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
+                android:id="@+id/edit_money"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入金额...."
+                android:inputType="number"
+                app:met_iconLeft="@drawable/icon_money" />
+        </LinearLayout>
+
+
+    </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:clickable="true"
         android:id="@+id/fab_record"
-        android:layout_gravity="end"
-        app:fabCustomSize="50dp"
-        app:rippleColor="@color/xui_btn_blue_normal_color"
-        android:layout_marginBottom="30dp"
-        android:layout_marginEnd="10dp"
         android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="end"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="30dp"
         android:background="@color/xui_btn_blue_normal_color"
+        android:clickable="true"
         android:src="@drawable/icon_edit"
-        android:layout_height="50dp" />
+        app:fabCustomSize="50dp"
+        app:rippleColor="@color/xui_btn_blue_normal_color" />
 </LinearLayout>

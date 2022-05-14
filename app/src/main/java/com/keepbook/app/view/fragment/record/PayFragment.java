@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.keepbook.app.R;
 import com.keepbook.app.model.vo.IconTitleItem;
+import com.keepbook.app.view.MainActivity;
 import com.keepbook.app.view.fragment.base.BaseFragment;
 import com.keepbook.app.viewholder.IconItemViewHolder;
 import com.xuexiang.xui.adapter.recyclerview.XRecyclerAdapter;
@@ -116,6 +117,11 @@ public class PayFragment extends BaseFragment {
                     @Override
                     public void onClick(View v) {
                         mPos = position;
+                        Log.i("TAG", "getContext().getClass()=" + getContext().getClass());
+                        Log.i("TAG", "PayFragment.this.getParentFragment()=" + PayFragment.this.getParentFragment());
+                        Log.i("TAG", "PayFragment.this.getContext()=" + PayFragment.this.getContext());
+                        ((MainActivity) getContext()).setCategory(item.getTitle());
+
                         notifyDataSetChanged();
                     }
                 });

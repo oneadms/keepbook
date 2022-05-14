@@ -19,6 +19,7 @@ public class MainActivity extends BaseActivity {
     private ArrayList<Fragment> fragments;
     private FragmentAdapter<Fragment> fragmentAdapter;
     private BottomNavigationView bottomNavigation;
+    private RecordFragment recordFragment;
 
     @Override
     protected void init() {
@@ -29,17 +30,21 @@ public class MainActivity extends BaseActivity {
 
     }
 
+
     private void initFragments() {
         fragments = new ArrayList<>();
         /**
          * 顺序更改要和 com.keepbook.app.view.listener.PageSelectListener 该类同步更改
          */
         fragments.add(new HomeFragment());
-        fragments.add(new RecordFragment());
+        recordFragment = new RecordFragment();
+        fragments.add(recordFragment);
         fragments.add(new BIllFragment());
 
     }
-
+    public void setCategory(String category) {
+        recordFragment.setCategory(category);
+    }
     @Override
     protected void initView() {
         mainViewpager = (MyViewPager) findViewById(R.id.main_viewpager);
