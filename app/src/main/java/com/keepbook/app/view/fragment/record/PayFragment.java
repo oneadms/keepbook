@@ -77,7 +77,10 @@ public class PayFragment extends BaseFragment {
                                     notifyCirclerChanged(page);
 
                                     refresh(iconTitleItems.subList((page - 1) * 12, (page - 1) * 12 + 12));
-
+                                    mPos = -1;
+                                }else{
+//                                    滑动条件不满足 继续分发
+                                    return false;
                                 }
 
                                 break;
