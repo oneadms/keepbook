@@ -1,5 +1,6 @@
 package com.keepbook.app.model.dto;
 
+import java.util.Date;
 import java.util.Objects;
 
 public class
@@ -7,21 +8,32 @@ KeepBookDTO {
     private Integer id;
     private String category;
     private Double money;
+    private Date time;
+
+    public Date getTime() {
+        return time;
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
+    }
 
     public KeepBookDTO() {
 
     }
 
-    public KeepBookDTO(String category, Double money, String remark) {
-        this.category = category;
-        this.money = money;
-        this.remark = remark;
-    }
-
-    public KeepBookDTO(Integer id, String category, Double money, String remark) {
+    public KeepBookDTO(Integer id, String category, Double money, Date time, String remark) {
         this.id = id;
         this.category = category;
         this.money = money;
+        this.time = time;
+        this.remark = remark;
+    }
+
+    public KeepBookDTO(String category, Double money, Date time, String remark) {
+        this.category = category;
+        this.money = money;
+        this.time = time;
         this.remark = remark;
     }
 

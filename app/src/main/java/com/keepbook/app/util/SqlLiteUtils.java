@@ -12,7 +12,7 @@ public class SqlLiteUtils extends SQLiteOpenHelper {
     private static final String NAME = "KeepBook.db";
     private static SqlLiteUtils sqlLiteUtils;
     private final static int VERSION = 1;
-    private final String CREATE_TABLE = "create table keepbook(id integer primary key autoincrement,category text,remark text,money real)";
+    private final String CREATE_TABLE = "create table keepbook(id integer primary key autoincrement,category text,remark text,money real,time text)";
 
     private SqlLiteUtils(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version, @Nullable DatabaseErrorHandler errorHandler) {
         super(context, name, factory, version, errorHandler);

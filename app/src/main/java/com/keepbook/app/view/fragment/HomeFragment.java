@@ -5,7 +5,7 @@ import android.view.View;
 import com.keepbook.app.R;
 import com.keepbook.app.view.fragment.base.BaseFragment;
 
-public class HomeFragment extends BaseFragment {
+public class    HomeFragment extends BaseFragment {
     public HomeFragment() {
         super(R.layout.fragment_home);
     }

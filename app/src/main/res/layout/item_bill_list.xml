@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:padding="10dp"
 
     android:orientation="horizontal">
 
     <TextView
+
         android:id="@+id/tv_time"
         android:gravity="center"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        tools:text="月份" />
+        android:text="月份" />
 
     <TextView
         android:id="@+id/tv_pay"
         android:gravity="center"
-        tools:text="支出"
+        android:text="支出"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1" />
@@ -25,7 +27,7 @@
     <TextView
         android:id="@+id/tv_come"
         android:gravity="center"
-        tools:text="收入"
+        android:text="收入"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1" />
@@ -33,7 +35,7 @@
     <TextView
         android:id="@+id/tv_balance"
         android:gravity="center"
-        tools:text="结余"
+        android:text="结余"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1" />

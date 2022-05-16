@@ -67,8 +67,27 @@
                 android:hint="请输入金额...."
                 android:inputType="number"
                 app:met_iconLeft="@drawable/icon_money" />
+
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/btn_date_select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <com.xuexiang.xui.widget.imageview.IconImageView
+
+
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/icon_date" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="选择时间" />
+        </LinearLayout>
 
     </LinearLayout>
 

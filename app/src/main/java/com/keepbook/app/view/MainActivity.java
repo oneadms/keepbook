@@ -6,7 +6,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.keepbook.app.R;
 import com.keepbook.app.view.base.BaseActivity;
 import com.keepbook.app.view.fragment.BIllFragment;
-import com.keepbook.app.view.fragment.HomeFragment;
 import com.keepbook.app.view.fragment.record.RecordFragment;
 import com.keepbook.app.view.listener.PageSelectListener;
 import com.keepbook.app.wdiget.MyViewPager;
@@ -36,7 +35,7 @@ public class MainActivity extends BaseActivity {
         /**
          * 顺序更改要和 com.keepbook.app.view.listener.PageSelectListener 该类同步更改
          */
-        fragments.add(new HomeFragment());
+//        fragments.add(new HomeFragment());
         recordFragment = new RecordFragment();
         fragments.add(recordFragment);
         fragments.add(new BIllFragment());

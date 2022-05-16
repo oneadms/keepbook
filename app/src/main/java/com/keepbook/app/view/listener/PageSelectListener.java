@@ -11,7 +11,7 @@ import com.keepbook.app.R;
 public class PageSelectListener implements NavigationBarView.OnItemSelectedListener {
 
     private final ViewPager mainViewpager;
-    private  final Integer[] FRAGMENTS_ID = {R.id.home,R.id.record,R.id.bill};
+    private  final Integer[] FRAGMENTS_ID = {R.id.record,R.id.bill};
 
     public PageSelectListener(ViewPager mainViewpager) {
         this.mainViewpager = mainViewpager;
